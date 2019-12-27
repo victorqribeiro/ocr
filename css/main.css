@@ -1,0 +1,75 @@
+
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+html, body, input, button {
+	font-family: "Arial";
+	font-size: 1em;
+}
+
+img {
+	max-width: 100%;
+}
+
+progress:after {
+	content: 'Working...';
+	position: relative;
+	font-style: italic;
+	top: 20px;
+	left: 0;
+}
+
+#main {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: middle;
+}
+
+#toolbar {
+	width: 100%;
+	line-height: 2em;
+	background-color: rgb(200,200,200);
+	text-align: center;
+}
+
+#result {
+	width: 100%;
+	flex: 1 0 auto;
+	display: flex;
+	align-items: stretch;
+	justify-content: center;
+}
+
+#preview {
+	width: 50%;
+}
+
+#recognizedText {
+	width: 50%;
+}
+
+@media only screen and (max-width: 600px) {
+	#result {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+	
+	#preview {
+		height: 50%;
+		width: 95%;
+	}
+
+	#recognizedText {
+		height: 50%;
+		width: 95%;
+	}
+}
+
