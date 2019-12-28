@@ -23,6 +23,7 @@ const OCR = (img, lang = 'por+eng') => {
 	progress.value = 0
 	progress.style.display = 'block'
 	progress.style.margin = '25% auto'
+	$('#recognizedText').innerHTML = ""
 	$('#recognizedText').appendChild( progress )
 	
 	Tesseract.recognize(
