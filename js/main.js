@@ -1,24 +1,25 @@
+let imgSrc = null
 
 const $ = _ => document.querySelector(_)
 
 const $c = _ => document.createElement(_)
 
 const open = e => {
-	if(e.target.files[0]){
-		const imageSrc = e.target.files[0]
+	if(e.target.files.length){
 		const url = window.URL || window.webkitURL
-		draw(url.createObjectURL(imageSrc))
+		imgSrc = url.createObjectURL(e.target.files[0])
+		draw()
 	}
 }
 
 const draw = img => {
-	$('#preview').style.backgroundImage = `url(${img})`
+	$('#preview').style.backgroundImage = `url(${imgSrc})`
 	$('#preview').style.backgroundRepeat = 'no-repeat'
 	$('#preview').style.backgroundSize = 'contain'
-	OCR(img)
+	OCR()
 }
 
-const OCR = (img, lang = 'por+eng') => {
+const OCR = () => {
 	const progress = $c('progress') 
 	progress.value = 0
 	progress.style.display = 'block'
@@ -27,8 +28,8 @@ const OCR = (img, lang = 'por+eng') => {
 	$('#recognizedText').appendChild( progress )
 	
 	Tesseract.recognize(
-		img,
-		lang,
+		imgSrc,
+		$('#lang').value,
 		{
 			logger: m => { progress.value = m.progress }
 		})
@@ -40,6 +41,7 @@ const OCR = (img, lang = 'por+eng') => {
 }
 
 $('#import').addEventListener('change', open )
+$('#lang').addEventListener('change', _ => {	if(imgSrc) OCR() })
 
 window.addEventListener('DOMContentLoaded', () => {
   const parsedUrl = new URL(window.location);
