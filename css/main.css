@@ -22,6 +22,7 @@ progress:after {
 	left: 0;
 }
 
+
 #main {
 	height: 100%;
 	width: 100%;
@@ -35,7 +36,10 @@ progress:after {
 	width: 100%;
 	line-height: 2em;
 	background-color: rgb(200,200,200);
-	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
 }
 
 #result {
