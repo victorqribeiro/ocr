@@ -8,7 +8,7 @@ const filesToCache = [
       './manifest.json'
  ];
 
-const staticCacheName = 'pages-cache-v1';
+const staticCacheName = 'pages-cache-v1.1';
 
 self.addEventListener('install', event => {
   event.waitUntil(
